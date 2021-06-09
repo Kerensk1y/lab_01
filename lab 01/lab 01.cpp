@@ -22,17 +22,13 @@ int main()
 	cerr << "Введите количество групп:\t"; cin >> bin_count;
 
 	double min = numbers[0];
+	double max = numbers[0];
 	for (size_t i = 0; i < number_count; i++)
 	{
 		if (numbers[i] < min)
 		{
 			min = numbers[i];
 		}
-	}
-
-	double max = numbers[0];
-	for (size_t i = 0; i < number_count; i++)
-	{
 		if (numbers[i] > max)
 		{
 			max = numbers[i];

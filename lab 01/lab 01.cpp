@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include <vector>
 
@@ -16,6 +15,7 @@ int main()
     {
         cin >> numbers[i];
     }
+
     size_t bin_count;
     cerr << "Enter bins count: ";
     cin >> bin_count;
@@ -36,25 +36,32 @@ int main()
     }
     vector<size_t> bins(bin_count);
     double bin_size = (max - min) / bin_count;
-    for (int i = 0; i < number_count; i++) {
+
+    for (size_t i = 0; i < number_count; i++)
+    {
         bool found = false;
-        for (int j = 0; (j < bin_count - 1) && !found; j++) {
+        for (int j = 0; (j < bin_count - 1) && !found; j++)
+        {
             auto lo = min + j * bin_size;
             auto hi = min + (j + 1) * bin_size;
-            if ((lo <= numbers[i]) && (numbers[i] < hi)) {
+            if ((lo <= numbers[i]) && (numbers[i] < hi))
+            {
                 bins[j]++;
                 found = true;
             }
         }
-        if (!found) {
+        if (!found)
+        {
             bins[bin_count - 1]++;
         }
     }
 
     size_t count;
     size_t max_count = bins[0];
-    for (int i = 1; i < bin_count; i++) {
-        if (bins[i] > max_count) {
+    for (int i = 1; i < bin_count; i++)
+    {
+        if (bins[i] > max_count)
+        {
             max_count = bins[i];
         }
     }
@@ -74,8 +81,10 @@ int main()
 
     const size_t MAX_ASTERISK = SCREEN_WIDTH - n - 1;
 
-    if (max_count > MAX_ASTERISK) {
-        for (int i = 0; i < bin_count; i++) {
+    if (max_count > MAX_ASTERISK)
+    {
+        for (int i = 0; i < bin_count; i++)
+        {
             count = bins[i];
             size_t height = MAX_ASTERISK * (static_cast<double>(count) / max_count);
             size_t r = max_count;
@@ -94,18 +103,22 @@ int main()
                 r = r / 10;
 
             }
-            for (int j = 0; j < height; j++) {
+            for (int j = 0; j < height; j++)
+            {
                 cout << '*';
             }
             cout << endl;
         }
     }
-    else {
-        for (int i = 0; i < bin_count; i++) {
+    else
+    {
+        for (int i = 0; i < bin_count; i++)
+        {
             if (bins[i] < 100) cout << ' ';
             if (bins[i] < 10) cout << ' ';
             cout << bins[i] << '|';
-            for (int j = 0; j < bins[i]; j++) {
+            for (int j = 0; j < bins[i]; j++)
+            {
                 cout << '*';
             }
             cout << endl;
